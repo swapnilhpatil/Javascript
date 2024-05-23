@@ -1,0 +1,52 @@
+Chech a word is isogram in pure javascript.
+
+An isogram is a word with a repeated character.
+
+function isIsogram(word){
+    x = false; y = false;
+    for(i = 0; i < word.length; i++){
+        wordl = word.substring(0,i)
+        wordr = word.substring(i)
+        x = wordl.includes(word.charAt(i))
+        y = wordr.includes(word.charAt(i))
+        //console.log(x,wordl,wordr)
+    }
+    return x&&y
+}
+
+isIsogram("thomas");//False
+isIsogram("moses"); //True
+
+function isIsogram(str){
+ return str.split('').filter((item, pos, arr)=> arr.indexOf(item) == pos).length == str.length;
+}
+console.log(isIsogram('thomas'));
+console.log(isIsogram('moses'));
+
+function isIsogram(str){
+  return !str.match(/([a-z]).*\1/i);
+}
+
+let isIsogram = (str) => str.split("").every((c, i) => str.indexOf(c) == i);
+                            
+console.log(isIsogram("thomas"));   /* no repeating letter */
+console.log(isIsogram("moses"));    /* s repeat 2 times */
+console.log(isIsogram("hello"));    /* l repeat 2 times */
+console.log(isIsogram("world"));    /* no repeating letter */
+console.log(isIsogram("a b c"));    /* space character repeat 2 times */
+
+const isIsogram = (word) => {
+    return new Set(word.toLowerCase()).size === word.length
+}
+
+console.log(isIsogram('Thor'));//true
+console.log(isIsogram('Loki'));//true
+console.log(isIsogram('America'));//false
+
+function isIsogram(str) {
+    return new Set(str.toUpperCase()).size == str.length
+}
+
+console.log(isIsogram('Thor'));//true
+console.log(isIsogram('Loki'));//true
+console.log(isIsogram('America'));//false
